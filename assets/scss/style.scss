@@ -1,3 +1,4 @@
+@use "sass:color";
 // Variables
 $primary-color: #ff6f61;
 $secondary-color: #333;
@@ -19,6 +20,21 @@ $breakpoint-tablet: 900px;
 %btn-style {
   border-radius: .25rem;
   text-transform: uppercase;
+}
+
+.btn {
+  @extend %btn-style;
+  background: $primary-color;
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+  @include transition(all .3s ease);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  &:hover {
+    background: color.adjust($primary-color, $lightness: -10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
 }
 
 // Base
@@ -76,8 +92,13 @@ html, body {
       padding: .75rem 1.5rem;
       border: none;
       cursor: pointer;
-      @include transition(background .3s);
-      &:hover { background: darken($primary-color, 10%); }
+      @include transition(all .3s ease);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      &:hover {
+        background: color.adjust($primary-color, $lightness: -10%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
     }
   }
   &-image img {
