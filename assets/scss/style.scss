@@ -1,0 +1,143 @@
+// Variables
+$primary-color: #ff6f61;
+$secondary-color: #333;
+$font-stack: 'Arial, sans-serif';
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin transition($prop: all, $duration: .3s, $easing: ease) {
+  transition: $prop $duration $easing;
+}
+
+// Placeholders
+%btn-style {
+  border-radius: .25rem;
+  text-transform: uppercase;
+}
+
+// Base
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+  color: $secondary-color;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Layout
+.header {
+  background: $primary-color;
+  .nav {
+    @include flex-center;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      li {
+        margin: 0 1rem;
+        a {
+          color: white;
+          text-decoration: none;
+          @include transition(color .2s);
+          &:hover {
+            color: darken(white, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin: 2rem 0;
+  &-content {
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    p { margin-bottom: 1.5rem; }
+    .btn {
+      @extend %btn-style;
+      background: $primary-color;
+      color: white;
+      padding: .75rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      @include transition(background .3s);
+      &:hover { background: darken($primary-color, 10%); }
+    }
+  }
+  &-image img {
+    width: 100%;
+    border-radius: .5rem;
+  }
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+  .feature {
+    background: lighten($primary-color, 40%);
+    padding: 1.5rem;
+    border-radius: .5rem;
+    @include transition(transform .3s);
+    &:hover {
+      transform: scale(1.05);
+    }
+    h3 { margin-top: 0; }
+  }
+}
+.footer {
+  background: $secondary-color;
+  color: white;
+  padding: 1rem 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    p a {
+      color: lighten($secondary-color, 40%);
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+// Dynamic classes
+@each $size in small, medium, large {
+  .btn-#{$size} {
+    @if $size == small {
+      padding: .5rem 1rem;
+    } @else if $size == medium {
+      padding: .75rem 1.25rem;
+    } @else {
+      padding: 1rem 1.5rem;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: $breakpoint-tablet) {
+  .hero {
+    grid-template-columns: 1fr;
+    &-image { margin-top: 1.5rem; }
+  }
+  .features { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: $breakpoint-mobile) {
+  .nav ul { flex-direction: column; }
+  .features { grid-template-columns: 1fr; }
+}
