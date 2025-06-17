@@ -155,5 +155,12 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+.gallery .feature {
+  transition: all 0.3s ease 0.3s ease;
+}
+.gallery .feature:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
 /*# sourceMappingURL=style.css.map */
