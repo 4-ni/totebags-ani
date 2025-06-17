@@ -28,16 +28,26 @@
     </nav>
   </header>
   <section class="contact container">
-    <h1>Contacto</h1>
-    <form action="#" class="contact-form">
-      <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Correo</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Mensaje</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit" class="btn btn-large">Enviar</button>
-    </form>
+    <h1 class="mb-4 text-center">Contacto</h1>
+    <div class="card p-4 bg-light shadow-sm mx-auto" style="max-width:600px">
+      <form action="#" class="row g-3">
+        <div class="mb-3 col-12">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3 col-12">
+          <label for="email" class="form-label">Correo</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3 col-12">
+          <label for="message" class="form-label">Mensaje</label>
+          <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </div>
+      </form>
+    </div>
   </section>
   <footer class="footer">
     <div class="container">
