@@ -1,0 +1,24 @@
+// Paleta de colores
+$primary-color: #ff6f61;
+$secondary-color: #333;
+$accent-color: #f0c674;
+$background-color: #f9f9f9;
+
+// Tipografía
+$font-stack: 'Arial, sans-serif';
+$base-font-size: 16px;
+
+// Breakpoints
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($prop: all, $duration: 0.3s, $easing: ease) {
+  transition: $prop $duration $easing;
+}

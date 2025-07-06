@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+// Media Queries
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+
+    &-image {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav ul {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Animaciones para galería
+.gallery .feature {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Imágenes responsivas
+.features .feature img,
+.about .about-image img,
+.blog .feature img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.features .feature img {
+  max-height: 300px;
+}
+
+.blog .feature img {
+  max-height: 200px;
+}

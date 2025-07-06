@@ -1,0 +1,48 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+// Mixin para transiciones (lo necesitas definir en _variables.scss)
+@mixin transition($args...) {
+  transition: $args;
+}
+
+// Placeholder común para botones
+%btn-style {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: .25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+// Clase base para botón
+.btn {
+  @extend %btn-style;
+  background: $primary-color;
+  color: white;
+  text-decoration: none;
+  @include transition(all 0.3s ease);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: color.adjust($primary-color, $lightness: -10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Tamaños dinámicos para botones
+@each $size in small, medium, large {
+  .btn-#{$size} {
+    @if $size == small {
+      padding: .5rem 1rem;
+    } @else if $size == medium {
+      padding: .75rem 1.25rem;
+    } @else {
+      padding: 1rem 1.5rem;
+    }
+  }
+}
